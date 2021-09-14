@@ -11,7 +11,9 @@ def sign(m):
 
 	signature = ecdsa.sign(m, priv_key)
 	r = signature[0]
+	print(r)
 	s = signature[1]
+	print(s)
 
 	assert isinstance( public_key, point.Point )
 	assert isinstance( r, int )
