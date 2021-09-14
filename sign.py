@@ -10,7 +10,7 @@ def sign(m):
     private_key = keys.gen_private_key(curve.secp256k1)
     public_key = keys.get_public_key(private_key, curve.secp256k1)
     # standard signature, returns two integers
-    r, s = ecdsa.sign(m, private_key)
+    r, s = ecdsa.sign(m, private_key, hashfunc=sha256)
 
     assert isinstance( public_key, point.Point )
     assert isinstance( r, int )
