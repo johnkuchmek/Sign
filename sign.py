@@ -5,14 +5,14 @@ from fastecdsa import curve, ecdsa, keys, point
 from hashlib import sha256
 
 def sign(m):
-  #generate public key
-	#Your code here
-	priv_key, public_key = keys.gen_keypair(curve.secp256k1)
-	sk = SigningKey.general(curve.secp256k1)
-	sig= sk.sign(m, priv_key)
-	r = sig[0]
-	s = sig[1]
-	assert isinstance( public_key, point.Point )
-	assert isinstance( r, int )
-	assert isinstance( s, int )
-	return( public_key, [r,s] )
+    #generate public key
+    #Your code here
+    private_key = keys.gen_private_key(curve.secp256k1)
+    public_key = keys.get_public_key(private_key, curve.secp256k1)
+    # standard signature, returns two integers
+    r, s = ecdsa.sign(m, private_key)
+
+    assert isinstance( public_key, point.Point )
+    assert isinstance( r, int )
+    assert isinstance( s, int )
+    return( public_key, [r,s] )
