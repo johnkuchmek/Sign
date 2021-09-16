@@ -14,7 +14,7 @@ def sign(m):
     print((r,s))
     valid = ecdsa.verify((r,s),m,pub_key, secp256k1)
     print(valid)
-    assert isinstance( pu_k, point.Point )
+    assert isinstance( pub_key, point.Point )
     assert isinstance( r, int )
     assert isinstance( s, int )
     return(pub_key, [r,s])
